@@ -42,6 +42,4 @@ class VendingMachine
     # 自動販売機に入っているお金を0円に戻す
     @slot_money = 0
   end
-  def buy
-    # コーラ等を買うメソッド（試行）
 end

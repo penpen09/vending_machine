@@ -8,12 +8,10 @@ class VendingMachine
     @sales_money = 0
     @drink_box = []
     @drink_box << {:name => "コーラ", :price => 120, :stock => 5}
-    @drink_box << {:name => "レッドブル", :price => 200, :stock => 5}
-    @drink_box << {:name => "水", :price => 100, :stock => 5}
   end
   # 硬貨投入処理
   def slot_money(money)
-    return false unless MONEY.include?(money)
+    return money unless MONEY.include?(money)
     @slot_money += money
   end
   # 投入金額の総計を取得できる。
@@ -22,7 +20,9 @@ class VendingMachine
   end
   # 払い戻し処理
   def return_money
+    temp_slot_money = @slot_money
     @slot_money = 0
+    temp_slot_money
   end
   #売上金の取得
   def current_sales_money
@@ -32,7 +32,7 @@ class VendingMachine
   def drink_list
     @drink_box.each_with_index do |value, index|
       status = "購入可能"
-      status = "金額不足" if value[:price] >= @slot_money
+      status = "金額不足" if value[:price] > @slot_money
       status = "売切" if value[:stock] < 1
       @drink_box[index][:status] = status
     end

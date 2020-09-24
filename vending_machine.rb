@@ -25,7 +25,7 @@ class VendingMachine
   # 10円玉、50円玉、100円玉、500円玉、1000円札を１つずつ投入できる。
   MONEY = [10, 50, 100, 500, 1000].freeze
 
-  attr_reader :total, :sales_money, :drink_box
+  attr_reader :total, :sales_money, :drinklist
 
   #初期値
   def initialize

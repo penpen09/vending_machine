@@ -8,12 +8,12 @@ m = VendingMachine.new
 
 (金額投入)
 m.slot_money(500) # => 500
-m.current_slot_money # => 500
+m.total # => 500
 m.return_money # => 500
 
 (投入できる硬貨ではない場合)
 m.slot_money(180) # => 180
-m.current_slot_money # => 0
+m.total # => 0
 
 (購入可能なドリンクリストを表示)
 m.purchasable_drink_names # => [:cola]
@@ -24,7 +24,7 @@ m.purchasable_drink_names # => []
 m.purchasable?(:cola) # => true
 
 (購入)
-m.putout(DrinkPrice.cola.name) # => [:cola, 380]
+m.putout(:cola) # => [:cola, 380]
 
 (補充)
 m.stock(DrinkPrice.cola) # => 5

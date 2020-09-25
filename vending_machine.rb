@@ -18,6 +18,7 @@ class DrinkPrice
   def self.water
     self.new(:water,100)
   end
+
 end
 
 # 自動販売機の処理
@@ -41,21 +42,11 @@ class VendingMachine
     @total += money
   end
 
-  # 投入金額の総計を取得できる。
-  def current_slot_money
-    @total
-  end
-
   # 払い戻し処理
   def return_money
     temp_slot_money = @total
     @total = 0
     temp_slot_money
-  end
-
-  #売上金の取得
-  def current_sales_money
-    @sales_money
   end
 
   # 購入処理
